@@ -10,7 +10,9 @@ Config ESP8266 port: In connect_test.ino
 
 Database: Local
 Colummns in table: ID |temperature| humidity| red| green| blue| buzzer| create_at
+
 Led RGB: Common anode
+
 mqtt: Hive broker
 
 
