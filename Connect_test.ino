@@ -8,11 +8,11 @@
 */
 const char* ssid="Asura";
 const char* pass="abcdefgh";
-const char* brokerUser = "Asura";
-const char* brokerPass = "Tholamtho123";
-const char* broker = "broker.hivemq.com";
-const char* outTopic ="ESP_data";
-const char* inTopic ="Web_data";
+const char* brokerUser = "#";
+const char* brokerPass = "#";
+const char* broker = "#";
+const char* outTopic ="#";
+const char* inTopic ="#";
 #define DHTPIN 2 // Pin D4
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
