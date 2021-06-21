@@ -12,8 +12,8 @@ var server = require("http").Server(app);
 var settings = {
     mqttServerUrl: "broker.hivemq.com",
     port: 1883,
-    username: "Asura",
-    password: "Tholamtho123",
+    username: "#",
+    password: "#",
     topic: "ESP_data"
 }
 
