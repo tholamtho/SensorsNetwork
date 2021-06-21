@@ -1,0 +1,143 @@
+<html>
+<title>TEST</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <link href="/Style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script>
+        var Led_red = 1;
+        var Led_blue = 1;
+        var Led_green = 1;
+        var slider = document.getElementById("myRange");;
+        var buzzer_output = document.getElementById("Buzzer");;
+
+        function Led_click_1() {
+
+            var checkBox = document.getElementById("LedValue_Red");
+            if (checkBox.checked) {
+                alert("Bật Đèn Màu Đỏ");
+                Led_red = 0;
+            } else {
+                alert("Tắt đèn Màu Đỏ");
+                Led_red = 1;
+            }
+        };
+
+        function Led_click_3() {
+            var checkBox = document.getElementById("LedValue_Blue");
+
+            if (checkBox.checked) {
+                alert("Bật Đèn Màu Xanh");
+                Led_blue = 0;
+            } else {
+                alert("Tắt đèn Màu Xanh");
+                Led_blue = 1;
+            }
+        };
+
+        function Led_click_2() {
+            var checkBox = document.getElementById("LedValue_Green");
+            if (checkBox.checked) {
+                alert("Bật Đèn Xanh Lá!");
+                Led_green = 0;
+            } else {
+                alert("Tắt đèn Xanh Lá!");
+                Led_green = 1;
+            }
+        };
+
+
+
+
+        /// Call to server
+        var socket = io("localhost:3000");
+        //////////////////////////////
+        socket.on("DHT11_Data", function(data) {
+            var obj = JSON.parse(data);
+            $("#noidung").append(obj.Temp);
+            document.getElementById("temper").innerHTML = obj.Temp;
+        });
+        ///////////////////////////////
+        $(document).ready(function() {
+
+            socket.on("DHT11_Data", function(data) {
+                const obj = JSON.parse(data);
+                $("#noidung").append(obj.Temp);
+                document.getElementById("temper").innerHTML = obj.Temp;
+                document.getElementById("humidity").innerHTML = obj.Humi;
+            });
+            //alert("Fully loaded");
+            setInterval(function() {
+                socket.emit("Led_Data", JSON.stringify({
+                    RED: Led_red,
+                    GREEN: Led_green,
+                    BLUE: Led_blue,
+                    BUZZER: slider.value
+                }));
+            }, 10000);
+
+        }, );
+    </script>
+
+    <body style="background-color: black;">
+        <div id="MrA"> Click Send</div>
+
+        <div class="container">
+            <div class="grid-container">
+                <div class="LivingRoom">
+                    Nhiệt Độ
+                    </br>
+                    <span id="temper" style="color: white;" width="150px"> Data</span>
+                </div>
+                <div class="BackYard">
+                    Độ Ẩm
+                    </br>
+                    <span id="humidity" style="color: white;" width="150px"> Data</span>
+                </div>
+                <div class="Gate">
+                    Còi báo
+                    </br>
+                    <div class="slidecontainer">
+                        <div class="slidecontaine2">
+                            <input type="range" min="1" max="100" value="50" class="slider2" id="myRange">
+                            <p>Value: <span id="Buzzer"></span></p>
+                            <script>
+                                slider = document.getElementById("myRange");
+                                buzzer_output = document.getElementById("Buzzer");
+                                output.innerHTML = slider.value;
+                                slider.oninput = function() {
+                                    output.innerHTML = this.value;
+                                }
+                            </script>
+                        </div>
+
+
+                    </div>
+                    <div class="Led">
+                        <p style="color: Red">Red</p>
+                        <label class="switch">
+                        <input type="checkbox" onclick = "Led_click_1()" id = "LedValue_Red">
+                        <span class="slider round"></span>
+                    </label>
+                        <p style="color: Green"> Green</p>
+                        <label class="switch">
+                        <input type="checkbox" onclick = "Led_click_2()" id = "LedValue_Green">
+                        <span class="slider round"></span>
+                    </label>
+                        <p style="color: Blue"> Blue </p>
+                        <label class="switch">
+                        <input type="checkbox" onclick = "Led_click_3()" id = "LedValue_Blue">
+                        <span class="slider round"></span>
+                    </label>
+                    </div>
+                </div>
+            </div>
+
+    </body>
+</head>
+
+</html>

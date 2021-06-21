@@ -1,0 +1,201 @@
+.container {
+    width: 90%;
+    margin: 100px;
+    background-color: #39393a;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 50px 100px;
+    grid-template-columns: auto auto auto;
+    background-color: white;
+    padding: 10px;
+    background-color: #000000;
+}
+
+.grid-item {
+    background-color: darkgrey;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.grid-item2 {
+    background-color: darkgrey;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.camera {
+    background-color: black;
+    grid-row-start: 5;
+    grid-row-end: 9;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    font-size: 50px;
+    text-align: center;
+}
+
+.LivingRoom {
+    background-color: #d6e45e;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    font-size: 50px;
+    text-align: center;
+    border-style: solid;
+    border-color: #ccc;
+}
+
+img {
+    float: left;
+}
+
+.Gate {
+    background-color: #13c7c7;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    grid-column-start: 2;
+    font-size: 50px;
+    text-align: center;
+    border-style: solid;
+    border-color: #ccc;
+}
+
+.BackYard {
+    background-color: #8857c9;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    font-size: 50px;
+    text-align: center;
+    border-style: solid;
+    border-color: #ccc;
+}
+
+h2 {
+    text-align: center;
+    font-size: 80px;
+    font-style: inherit;
+    color: white;
+}
+
+
+/* The switch - the box around the slider */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #4de640;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #4de640;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.Led {
+    background-color: #a7b4b4;
+    grid-row-start: auto;
+    grid-row-end: auto;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-size: 50px;
+    text-align: center;
+    border-style: solid;
+    border-color: #ccc;
+}
+
+.slidecontainer2 {
+    width: 1000%;
+}
+
+.slider2 {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider2:hover {
+    opacity: 1;
+}
+
+.slider2::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider2::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
